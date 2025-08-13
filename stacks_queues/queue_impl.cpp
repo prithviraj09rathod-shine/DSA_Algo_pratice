@@ -9,15 +9,15 @@ private:
      * Points to the position of the first element to be dequeued.
      * Updated after each dequeue operation.
      */
-    int front, rear, size;
-    int capacity;
+    int front, rear, currSize;
+    int size;
     int* arr;
 public:
     Queue(int c) {
-        capacity = c;
-        front = size = 0;
-        rear = capacity - 1;
-        arr = new int[capacity];
+        size = c;
+        front = currSize = 0;
+        rear = size - 1;
+        arr = new int[size];
     } 
     ~Queue() {
         delete[] arr;
@@ -25,60 +25,60 @@ public:
     /**
      * @brief Adds an item to the end of the queue.
      * If the queue is full, it prints an error message.
-     * Otherwise, it adds the item and updates the rear index and size.
+     * Otherwise, it adds the item and updates the rear index and currSize.
      * @param item The item to be added to the queue.
      * @return void
      */
  
     void enqueue(int item) {
-        if (size == capacity) {
+        if (currSize == size) {
             cout << "Queue Overflow\n";
             return;
         }
         //rear+1 bcoz we want to add the new item at the end of the queue       
-        rear = (rear + 1) % capacity; //assume circular queue and wrap around
+        rear = (rear + 1) % size; //assume circular queue and wrap around
         arr[rear] = item;
-        size++;
+        currSize++;
     }
     int dequeue() {
-        if (size == 0) {
+        if (currSize == 0) {
             cout << "Queue Underflow\n";
             exit(EXIT_FAILURE);
         }
         int item = arr[front];
-        front = (front + 1) % capacity; //assume circular queue and wrap around
-        size--;
+        front = (front + 1) % size; //assume circular queue and wrap around
+        currSize--;
         return item;
     }
     int getFront() {
-        if (size == 0) {    
+        if (currSize == 0) {    
             cout << "Queue is empty\n";
             exit(EXIT_FAILURE);
         }
         return arr[front];
     }
     int getRear() {
-        if (size == 0) {
+        if (currSize == 0) {
             cout << "Queue is empty\n";
             exit(EXIT_FAILURE);
         }
         return arr[rear];
     }
     bool isEmpty() {
-        return size == 0;
+        return currSize == 0;
     }
     bool isFull() {
-        return size == capacity;
+        return currSize == size;
     }
-    int getSize() {
-        return size;
+    int getcurrSize() {
+        return currSize;
     }
     void display() {
         if (isEmpty()) {
             cout << "Queue is empty\n";
         }
-        for (int i = 0; i < size; i++) {
-            cout << arr[(front + i) % capacity] << " ";
+        for (int i = 0; i < currSize; i++) {
+            cout << arr[(front + i) % size] << " ";
         }   
         cout << endl;
     }
@@ -105,8 +105,8 @@ public:
     void printIsFull() {
         cout << "Is queue full? " << (isFull() ? "Yes" : "No") << endl;
     }
-    void printSize() {
-        cout << "Queue size: " << getSize() << endl;
+    void printcurrSize() {
+        cout << "Queue currSize: " << getcurrSize() << endl;
     }
     void printDisplay() {
         display();
@@ -127,7 +127,7 @@ int main() {
     
     q.printDisplay();
     
-    q.printSize();
+    q.printcurrSize();
     q.printIsEmpty();
     q.printIsFull();
     
