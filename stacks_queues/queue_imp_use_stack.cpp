@@ -5,7 +5,7 @@ using namespace std;
 struct Queue {
   stack < int > stack1, stack2;
   
-  // Push elements in queue
+  // step1: Push elements in queue
   void Push(int data) {
     // Pop out all elements from the stack stack1
     while (!stack1.empty()) {

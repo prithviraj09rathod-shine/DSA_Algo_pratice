@@ -13,7 +13,8 @@ int binarySearch(vector<int> &arr, int target) {
     // Repeat until the pointers low and 
     // high meet each other
     while (left <= right) {
-        int mid = left + (right - left) / 2; // To avoid overflow
+        int mid = left + (right-left) / 2; // To avoid overflow(//)
+        //int mid = (left + right) / 2; // Calculate mid index
         if (arr[mid] == target) {
             return mid; // Target found
         } else if (arr[mid] < target) {
@@ -26,8 +27,8 @@ int binarySearch(vector<int> &arr, int target) {
 }   
 
 int main() {
-    vector<int> arr = {1, 2, 3, 4, 5, 6, 7}; // Sorted array
-    int target = 5; // Element to search for and find its index
+    vector<int> arr = {100, 10, 23, 4, 6, 1}; // Sorted array
+    int target = 1; // Element to search for and find its index
     // Index of 5 is 4 that we need to find it
     // Ensure the array is sorted before performing binary search
     //sort(arr.begin(), arr.end()); // Sorting the array

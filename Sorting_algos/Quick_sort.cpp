@@ -36,6 +36,7 @@ vector<int> quickSort(vector<int> arr) {
 int main()
 {
     vector<int> arr = {4, 6, 2, 5, 7, 9, 1, 3};
+    //vector<int> arr = {1 3, 2, 4, 7, 9, 5, 6};
     int n = arr.size();
     cout << "Before Using quick Sort: " << endl;
     for (int i = 0; i < n; i++)

@@ -28,7 +28,7 @@ void insertionSort(int arr[], int n) {
 }
 
 int main() {
-    int n;
+    /*int n;
     cout << "Enter number of elements: ";
     cin >> n;
     
@@ -36,8 +36,10 @@ int main() {
     cout << "Enter elements: ";
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
-    }
+    }*/
 
+    int arr[] = {5, 2, 9, 1, 5, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
     insertionSort(arr, n);
 
     cout << "Sorted array: ";
